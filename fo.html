@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rupex - F&O Trading Tax Regime</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General reset */
+    body, h1, h2, p {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* Layout */
+    body {
+      background: linear-gradient(135deg, #f0f7f7 0%, #e6f3f3 100%);
+      color: #333;
+      font-size: 16px;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #029f80 0%, #045b4a 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1s ease-out;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.05)"/></svg>');
+      opacity: 0.1;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: slideUp 1s ease-out;
+    }
+
+    .content h2 {
+      color: #029f80;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content h2 i {
+      font-size: 1.8rem;
+    }
+
+    .tax-info {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 25px 0;
+      border-left: 4px solid #029f80;
+    }
+
+    .tax-info p {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .tax-info strong {
+      color: #029f80;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 30px;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    table th, table td {
+      padding: 15px 20px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    table th {
+      background: linear-gradient(135deg, #029f80 0%, #045b4a 100%);
+      color: white;
+      font-weight: 600;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table td {
+      background: #f8f9fa;
+      transition: background-color 0.3s ease;
+    }
+
+    table tr:hover td {
+      background: #f0f7f7;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #029f80 0%, #045b4a 100%);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(2, 159, 128, 0.3);
+      text-decoration: none;
+    }
+
+    .btn-back:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 159, 128, 0.4);
+    }
+
+    .btn-back i {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-back:hover i {
+      transform: translateX(-5px);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+        padding: 0 20px;
+      }
+
+      .content {
+        margin: 20px;
+        padding: 25px;
+      }
+
+      .content h2 {
+        font-size: 1.6rem;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>F&O Trading Tax Regime</h1>
+  </header>
+
+  <div class="content">
+    <h2><i class="fas fa-exchange-alt"></i> Tax on Futures and Options (F&O)</h2>
+    
+    <div class="tax-info">
+      <p><strong>Tax Rate:</strong> Treated as business income and taxed according to the individual's tax slab.</p>
+      <p><strong>Holding Period:</strong> Not relevant since these are contracts, not shares.</p>
+    </div>
+
+    <table>
+      <tr>
+        <th>Tax Component</th>
+        <td>Taxed as business income</td>
+      </tr>
+      <tr>
+        <th>Securities Transaction Tax (STT)</th>
+        <td>0.01% on the transaction value for selling options and futures</td>
+      </tr>
+    </table>
+
+    <a href="index.html" class="btn-back">
+      <i class="fas fa-arrow-left"></i>
+      Back to Trading Methods
+    </a>
+  </div>
+</body>
+</html>

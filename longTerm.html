@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rupex - Long-Term Investing Tax Regime</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General reset */
+    body, h1, h2, p {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* Layout */
+    body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: #2c3e50;
+      font-size: 16px;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a5f7a 0%, #2ecc71 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.1;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-out;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      padding: 50px;
+      border-radius: 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      animation: slideUp 1s ease-out;
+    }
+
+    .content h2 {
+      color: #1a5f7a;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .content h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #1a5f7a, #2ecc71);
+      border-radius: 2px;
+    }
+
+    .content h2 i {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #1a5f7a 0%, #2ecc71 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tax-info {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 30px;
+      border-radius: 20px;
+      margin: 30px 0;
+      border-left: 5px solid #1a5f7a;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .tax-info:hover {
+      transform: translateX(5px);
+    }
+
+    .tax-info p {
+      margin: 12px 0;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tax-info strong {
+      color: #1a5f7a;
+      min-width: 120px;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 40px;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    table th, table td {
+      padding: 20px 25px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    table th {
+      background: linear-gradient(135deg, #1a5f7a 0%, #2ecc71 100%);
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table td {
+      background: #f8f9fa;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    table tr:hover td {
+      background: #f0f7f7;
+      transform: scale(1.01);
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #1a5f7a 0%, #2ecc71 100%);
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 40px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(26, 95, 122, 0.3);
+      text-decoration: none;
+    }
+
+    .btn-back:hover {
+      transform: translateY(-2px) translateX(-5px);
+      box-shadow: 0 6px 20px rgba(26, 95, 122, 0.4);
+    }
+
+    .btn-back i {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-back:hover i {
+      transform: translateX(-5px);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 40px 0;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        padding: 0 20px;
+      }
+
+      .content {
+        margin: 20px;
+        padding: 30px;
+      }
+
+      .content h2 {
+        font-size: 1.8rem;
+      }
+
+      .tax-info {
+        padding: 20px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .btn-back {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="rupex.jpg" alt="Rupex Logo">
+    </div>
+    <h1>Long-Term Investing Tax Regime</h1>
+  </header>
+
+  <div class="content">
+    <h2><i class="fas fa-chart-line"></i> Tax on Long-Term Capital Gains (LTCG)</h2>
+    
+    <div class="tax-info">
+      <p><strong>Tax Rate:</strong> 10% on LTCG exceeding ₹1 lakh in a financial year (No indexation benefit).</p>
+      <p><strong>Holding Period:</strong> More than 1 year (for stocks).</p>
+    </div>
+
+    <table>
+      <tr>
+        <th>Tax Component</th>
+        <td>10% on LTCG exceeding ₹1 lakh</td>
+      </tr>
+      <tr>
+        <th>Securities Transaction Tax (STT)</th>
+        <td>0.1% on the transaction value at the time of selling</td>
+      </tr>
+    </table>
+
+    <a href="index.html" class="btn-back">
+      <i class="fas fa-arrow-left"></i>
+      Back to Trading Methods
+    </a>
+  </div>
+</body>
+</html>
